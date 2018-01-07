@@ -13,14 +13,10 @@ import PromiseKit
 
 extension UIViewController {
     
-    func dismissTapAround(){
-        let dismissKeyboardTap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.dismissKeyboard))
-        dismissKeyboardTap.cancelsTouchesInView = false
-        self.view.addGestureRecognizer(dismissKeyboardTap)
-    }
     
-    @IBAction func dismissKeyboard() {
-        view.endEditing(true)
+
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true);
     }
     
     func routeTo(identifier: String){
@@ -73,9 +69,7 @@ extension UIViewController {
             }
             alertController.addAction(cancelAction)
             
-            self.present(alertController, animated: true, completion: {
-                fulfill(nil);
-            })
+            self.present(alertController, animated: true, completion: {})
         }
     }
     

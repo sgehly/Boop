@@ -11,4 +11,8 @@ target 'Boop' do
   pod 'KeychainAccess'
   pod 'MRCountryPicker', '~> 0.0.7'
   pod 'PhoneNumberKit', '~> 2.1'
+  pod 'UnderKeyboard', '~> 11.0'
+  pod 'BAFluidView'
+  pod 'UITextView+Placeholder', '~> 1.2'
+
 end

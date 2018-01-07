@@ -8,6 +8,7 @@
 //
 
 import UIKit
+import KeychainAccess
 
 class ConfirmationController: UIViewController, UITextFieldDelegate {
 
@@ -25,8 +26,8 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
     func addBottomBorder(view: UIView!){
         print(view);
         let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: view!.frame.height - 2, width: view!.frame.width, height: 2.0)
-        bottomLine.backgroundColor = UIColor.black.cgColor
+        bottomLine.frame = CGRect(x: 0.0, y: view!.frame.height - 1, width: view!.frame.width, height: 1.0)
+        bottomLine.backgroundColor = UIColor.darkGray.cgColor;
         view.layer.addSublayer(bottomLine)
     }
     
@@ -44,6 +45,7 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
             addBottomBorder(view: textField);
             textField.tag = index;
             textField.delegate = self;
+            textField.backgroundColor = UIColor.white;
         }
         
         char1.becomeFirstResponder();
@@ -88,7 +90,14 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
             }
             postRequest(endpoint: "users/auth/verify", body: ["code": generatedCode])
             .then { response -> Void in
-                self.navigationRouteTo(identifier: "finishSignup", controller: FinishProfileController())
+                if(response["message"]["loginUser"].boolValue){
+                    setLogin(uuid: response["message"]["data"]["uuid"].stringValue, token: response["message"]["data"]["accessToken"].stringValue)
+                    self.navigationController?.dismiss(animated: true, completion: {
+                        self.routeTo(identifier: "boopNavigation");
+                    })
+                }else{
+                    self.navigationRouteTo(identifier: "finishSignup", controller: FinishProfileController())
+                }
             }
             .catch { error -> Void in
                 self.clearAllFields();

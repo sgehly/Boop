@@ -83,14 +83,18 @@ class RegistrationController: UIViewController, MRCountryPickerDelegate {
     @IBAction func registrationPhoneNumber(_ sender: Any) {
         
         //Skip
-        //return self.navigationRouteTo(identifier: "confirmNumber", controller: ConfirmationController());
+        //return self.navigationRouteTo(identifier: "finishSignup", controller: FinishProfileController())
+        
+        if(self.phoneNumber.text == ""){
+            return self.showError(title: "Registration Error", message: "Please enter your phone number.");
+        }
         
         postRequest(endpoint: "users/auth/checkPhone", body: ["phoneNumber": self.phoneCode+phoneNumber.nationalNumber])
         .then { response -> Void in
             if(!response["success"].boolValue){
                 return self.showError(title: "Registration Error", message: response["message"].stringValue);
             }
-            currentUser = User(username: nil, displayName: nil, phoneNumber: self.phoneCode+self.phoneNumber.nationalNumber);
+            currentUser = User(displayName: "Simon", phoneNumber: self.phoneCode+self.phoneNumber.nationalNumber, uuid: nil, accessToken: nil);
             
             return self.navigationRouteTo(identifier: "confirmNumber", controller: ConfirmationController());
         }

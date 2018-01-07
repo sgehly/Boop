@@ -10,18 +10,33 @@ import Foundation
 import PromiseKit
 import KeychainAccess;
 
-func login(identifier: String?, password: String?) -> Promise<Any?>{
+//For trying unknown credentials
+func tryLogin(uuid: String, token: String) -> Promise<Any?>{
     return Promise { fulfill, reject in
-        
-        postRequest(endpoint: "user/login", body: ["identifier":identifier, "password":password])
+        let keychain = Keychain(service: "sh.boop.login");
+
+        postRequest(endpoint: "users/auth/login", body: ["uuid": uuid, "token": token])
             .then { response -> Void in
-                currentUser = User(username: response["message"]["username"]["username"].stringValue,
-                                   displayName: response["message"]["username"]["name"].stringValue,
-                                   phoneNumber: response["message"]["username"]["phone"].stringValue)
+                currentUser = User(displayName: response["message"]["name"].stringValue,
+                                   phoneNumber: response["message"]["phone"].stringValue,
+                                   uuid: uuid,
+                                   accessToken: token)
                 fulfill(nil);
             }
             .catch { error in
                 reject(error);
             }
+    }
+}
+
+//For setting known credentials
+func setLogin(uuid: String, token: String){
+    let keychain = Keychain(service: "sh.boop.login");
+    do{
+        try keychain.set(uuid, key: "identifier");
+        try keychain.set(token, key: "token")
+    }
+    catch let error{
+        print(error);
     }
 }

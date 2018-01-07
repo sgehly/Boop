@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C12B8F81200273EA00B5BC4F /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8F80200273EA00B5BC4F /* Interest.swift */; };
+		C12B8F83200274C900B5BC4F /* Interest.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12B8F82200274C900B5BC4F /* Interest.xib */; };
+		C12B8F852002843200B5BC4F /* InterestCreator.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12B8F842002843200B5BC4F /* InterestCreator.xib */; };
+		C12B8F8920028EBA00B5BC4F /* InterestCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8F8820028EBA00B5BC4F /* InterestCreator.swift */; };
+		C12B8F8F2002B25A00B5BC4F /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8F8E2002B25A00B5BC4F /* UIColor.swift */; };
 		C12FF4DD1FCE4939002E0E0F /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FF4DC1FCE4939002E0E0F /* Configuration.swift */; };
 		C12FF4DF1FCE496C002E0E0F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FF4DE1FCE496C002E0E0F /* HTTP.swift */; };
 		C12FF4E11FCE4E86002E0E0F /* Authentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FF4E01FCE4E86002E0E0F /* Authentication.swift */; };
@@ -14,9 +19,26 @@
 		C12FF4E61FCE50CE002E0E0F /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FF4E51FCE50CE002E0E0F /* State.swift */; };
 		C12FF4E81FCE5A60002E0E0F /* Elements.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FF4E71FCE5A60002E0E0F /* Elements.swift */; };
 		C12FF4EA1FCF1A6A002E0E0F /* ConfirmationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12FF4E91FCF1A6A002E0E0F /* ConfirmationController.swift */; };
+		C13620B51FFC10AD00460DD1 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13620B41FFC10AD00460DD1 /* MessageViewController.swift */; };
+		C13620B71FFC239B00460DD1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13620B61FFC239B00460DD1 /* Message.swift */; };
+		C13620B91FFC369600460DD1 /* MessageTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13620B81FFC369600460DD1 /* MessageTableView.swift */; };
 		C163489F1FC0E44A006A85F2 /* AuthenticationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C163489E1FC0E44A006A85F2 /* AuthenticationNavigationController.swift */; };
 		C16348A21FC0E691006A85F2 /* UIFadeSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16348A11FC0E691006A85F2 /* UIFadeSegue.swift */; };
 		C168058E1FCE3E9A0093058C /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C168058D1FCE3E9A0093058C /* HomeController.swift */; };
+		C16BCF391FFDDA33001C3619 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BCF381FFDDA33001C3619 /* ProfileViewController.swift */; };
+		C16BCF3B1FFE9740001C3619 /* BoopPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BCF3A1FFE9740001C3619 /* BoopPageViewController.swift */; };
+		C16BCF3F1FFEC72F001C3619 /* ReplyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BCF3E1FFEC72F001C3619 /* ReplyViewController.swift */; };
+		C16BCF421FFEEA4D001C3619 /* Composer.xib in Resources */ = {isa = PBXBuildFile; fileRef = C16BCF411FFEEA4D001C3619 /* Composer.xib */; };
+		C16BCF461FFEEC64001C3619 /* Composer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16BCF451FFEEC64001C3619 /* Composer.swift */; };
+		C17BCC041FF0B178005FA873 /* Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCBFD1FF0B177005FA873 /* Black.ttf */; };
+		C17BCC051FF0B178005FA873 /* Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCBFE1FF0B177005FA873 /* Bold.ttf */; };
+		C17BCC061FF0B178005FA873 /* Thinner.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCBFF1FF0B178005FA873 /* Thinner.ttf */; };
+		C17BCC071FF0B178005FA873 /* HeavyBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCC001FF0B178005FA873 /* HeavyBold.ttf */; };
+		C17BCC081FF0B178005FA873 /* Normal.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCC011FF0B178005FA873 /* Normal.ttf */; };
+		C17BCC091FF0B178005FA873 /* Bolder.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCC021FF0B178005FA873 /* Bolder.ttf */; };
+		C17BCC0A1FF0B178005FA873 /* Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C17BCC031FF0B178005FA873 /* Thin.ttf */; };
+		C17CEEFE1FDB85CE0037E0D7 /* PillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17CEEFD1FDB85CE0037E0D7 /* PillButton.swift */; };
+		C17CEF001FDBB1FF0037E0D7 /* BoopNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C17CEEFF1FDBB1FF0037E0D7 /* BoopNavigationController.swift */; };
 		C18B77641FC1004D00D0617B /* OstrichSans-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B775F1FC1004C00D0617B /* OstrichSans-Medium.otf */; };
 		C18B77651FC1004D00D0617B /* OstrichSans-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B77601FC1004C00D0617B /* OstrichSans-Light.otf */; };
 		C18B77661FC1004D00D0617B /* OstrichSans-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = C18B77611FC1004D00D0617B /* OstrichSans-Black.otf */; };
@@ -35,6 +57,15 @@
 		C1AC80B71FBE9FB100C54D3C /* LandingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC80B61FBE9FB100C54D3C /* LandingController.swift */; };
 		C1AC80BA1FBEA37E00C54D3C /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC80B91FBEA37E00C54D3C /* UIViewController.swift */; };
 		C1AC80BD1FBF43DF00C54D3C /* RegistrationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1AC80BC1FBF43DF00C54D3C /* RegistrationController.swift */; };
+		C1B72BF31FFC54DB008C2676 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B72BF21FFC54DB008C2676 /* UIView.swift */; };
+		C1B72BF51FFC5951008C2676 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BF41FFC5951008C2676 /* MessageView.xib */; };
+		C1B72BF81FFD3646008C2676 /* sukhumvit in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BF71FFD3646008C2676 /* sukhumvit */; };
+		C1B72BFF1FFD365A008C2676 /* SukhumvitSet-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BF91FFD3659008C2676 /* SukhumvitSet-Medium.ttf */; };
+		C1B72C001FFD365A008C2676 /* SukhumvitSet-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFA1FFD365A008C2676 /* SukhumvitSet-Bold.ttf */; };
+		C1B72C011FFD365A008C2676 /* SukhumvitSet-Text.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFB1FFD365A008C2676 /* SukhumvitSet-Text.ttf */; };
+		C1B72C021FFD365A008C2676 /* SukhumvitSet-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFC1FFD365A008C2676 /* SukhumvitSet-Thin.ttf */; };
+		C1B72C031FFD365A008C2676 /* SukhumvitSet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFD1FFD365A008C2676 /* SukhumvitSet-Light.ttf */; };
+		C1B72C041FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFE1FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf */; };
 		C1E482091FD635E1003F8ADF /* FinishProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E482081FD635E1003F8ADF /* FinishProfileController.swift */; };
 		C7460BD32C37079E4951C3D1 /* Pods_Boop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58F1D8684FCEEE3DBD013DE /* Pods_Boop.framework */; };
 /* End PBXBuildFile section */
@@ -59,6 +90,11 @@
 /* Begin PBXFileReference section */
 		6F38EF8CE57F60D481862ECE /* Pods-Boop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boop/Pods-Boop.release.xcconfig"; sourceTree = "<group>"; };
 		B58F1D8684FCEEE3DBD013DE /* Pods_Boop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C12B8F80200273EA00B5BC4F /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
+		C12B8F82200274C900B5BC4F /* Interest.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Interest.xib; sourceTree = "<group>"; };
+		C12B8F842002843200B5BC4F /* InterestCreator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestCreator.xib; sourceTree = "<group>"; };
+		C12B8F8820028EBA00B5BC4F /* InterestCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCreator.swift; sourceTree = "<group>"; };
+		C12B8F8E2002B25A00B5BC4F /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C12FF4DC1FCE4939002E0E0F /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C12FF4DE1FCE496C002E0E0F /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
 		C12FF4E01FCE4E86002E0E0F /* Authentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authentication.swift; sourceTree = "<group>"; };
@@ -66,12 +102,32 @@
 		C12FF4E51FCE50CE002E0E0F /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		C12FF4E71FCE5A60002E0E0F /* Elements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Elements.swift; sourceTree = "<group>"; };
 		C12FF4E91FCF1A6A002E0E0F /* ConfirmationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmationController.swift; sourceTree = "<group>"; };
+		C13620B41FFC10AD00460DD1 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		C13620B61FFC239B00460DD1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		C13620B81FFC369600460DD1 /* MessageTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageTableView.swift; sourceTree = "<group>"; };
 		C163489E1FC0E44A006A85F2 /* AuthenticationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationNavigationController.swift; sourceTree = "<group>"; };
 		C16348A11FC0E691006A85F2 /* UIFadeSegue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFadeSegue.swift; sourceTree = "<group>"; };
 		C16348A51FC0F931006A85F2 /* Bebas */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Bebas; sourceTree = "<group>"; };
 		C16348A61FC0F932006A85F2 /* pacifico */ = {isa = PBXFileReference; lastKnownFileType = folder; path = pacifico; sourceTree = "<group>"; };
 		C16348A71FC0F932006A85F2 /* ostrich-sans */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "ostrich-sans"; sourceTree = "<group>"; };
 		C168058D1FCE3E9A0093058C /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		C16BCF381FFDDA33001C3619 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C16BCF3A1FFE9740001C3619 /* BoopPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoopPageViewController.swift; sourceTree = "<group>"; };
+		C16BCF3E1FFEC72F001C3619 /* ReplyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplyViewController.swift; sourceTree = "<group>"; };
+		C16BCF411FFEEA4D001C3619 /* Composer.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Composer.xib; sourceTree = "<group>"; };
+		C16BCF451FFEEC64001C3619 /* Composer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Composer.swift; sourceTree = "<group>"; };
+		C17BCBFA1FF0B0DE005FA873 /* Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bold.ttf; sourceTree = "<group>"; };
+		C17BCBFB1FF0B0E0005FA873 /* Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Black.ttf; sourceTree = "<group>"; };
+		C17BCBFC1FF0B0E3005FA873 /* Bolder.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Bolder.ttf; sourceTree = "<group>"; };
+		C17BCBFD1FF0B177005FA873 /* Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Black.ttf; path = Boop/Assets/Fonts/Heebo/Black.ttf; sourceTree = "<group>"; };
+		C17BCBFE1FF0B177005FA873 /* Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bold.ttf; path = Boop/Assets/Fonts/Heebo/Bold.ttf; sourceTree = "<group>"; };
+		C17BCBFF1FF0B178005FA873 /* Thinner.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Thinner.ttf; path = Boop/Assets/Fonts/Heebo/Thinner.ttf; sourceTree = "<group>"; };
+		C17BCC001FF0B178005FA873 /* HeavyBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = HeavyBold.ttf; path = Boop/Assets/Fonts/Heebo/HeavyBold.ttf; sourceTree = "<group>"; };
+		C17BCC011FF0B178005FA873 /* Normal.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Normal.ttf; path = Boop/Assets/Fonts/Heebo/Normal.ttf; sourceTree = "<group>"; };
+		C17BCC021FF0B178005FA873 /* Bolder.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Bolder.ttf; path = Boop/Assets/Fonts/Heebo/Bolder.ttf; sourceTree = "<group>"; };
+		C17BCC031FF0B178005FA873 /* Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = Thin.ttf; path = Boop/Assets/Fonts/Heebo/Thin.ttf; sourceTree = "<group>"; };
+		C17CEEFD1FDB85CE0037E0D7 /* PillButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PillButton.swift; sourceTree = "<group>"; };
+		C17CEEFF1FDBB1FF0037E0D7 /* BoopNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoopNavigationController.swift; sourceTree = "<group>"; };
 		C18B775F1FC1004C00D0617B /* OstrichSans-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OstrichSans-Medium.otf"; path = "Boop/Assets/Fonts/ostrich-sans/OstrichSans-Medium.otf"; sourceTree = "<group>"; };
 		C18B77601FC1004C00D0617B /* OstrichSans-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OstrichSans-Light.otf"; path = "Boop/Assets/Fonts/ostrich-sans/OstrichSans-Light.otf"; sourceTree = "<group>"; };
 		C18B77611FC1004D00D0617B /* OstrichSans-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "OstrichSans-Black.otf"; path = "Boop/Assets/Fonts/ostrich-sans/OstrichSans-Black.otf"; sourceTree = "<group>"; };
@@ -96,6 +152,15 @@
 		C1AC80B61FBE9FB100C54D3C /* LandingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingController.swift; sourceTree = "<group>"; };
 		C1AC80B91FBEA37E00C54D3C /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		C1AC80BC1FBF43DF00C54D3C /* RegistrationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationController.swift; sourceTree = "<group>"; };
+		C1B72BF21FFC54DB008C2676 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		C1B72BF41FFC5951008C2676 /* MessageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		C1B72BF71FFD3646008C2676 /* sukhumvit */ = {isa = PBXFileReference; lastKnownFileType = folder; path = sukhumvit; sourceTree = "<group>"; };
+		C1B72BF91FFD3659008C2676 /* SukhumvitSet-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Medium.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Medium.ttf"; sourceTree = "<group>"; };
+		C1B72BFA1FFD365A008C2676 /* SukhumvitSet-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Bold.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Bold.ttf"; sourceTree = "<group>"; };
+		C1B72BFB1FFD365A008C2676 /* SukhumvitSet-Text.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Text.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Text.ttf"; sourceTree = "<group>"; };
+		C1B72BFC1FFD365A008C2676 /* SukhumvitSet-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Thin.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Thin.ttf"; sourceTree = "<group>"; };
+		C1B72BFD1FFD365A008C2676 /* SukhumvitSet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Light.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Light.ttf"; sourceTree = "<group>"; };
+		C1B72BFE1FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-SemiBold.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-SemiBold.ttf"; sourceTree = "<group>"; };
 		C1E482081FD635E1003F8ADF /* FinishProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishProfileController.swift; sourceTree = "<group>"; };
 		C3F3AC4BBE70D61E88C3616D /* Pods-Boop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boop/Pods-Boop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,10 +215,47 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		C12B8F8A20028ED000B5BC4F /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				C16BCF451FFEEC64001C3619 /* Composer.swift */,
+				C168058D1FCE3E9A0093058C /* HomeController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		C12B8F8B20028EDE00B5BC4F /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C16BCF3A1FFE9740001C3619 /* BoopPageViewController.swift */,
+				C17CEEFF1FDBB1FF0037E0D7 /* BoopNavigationController.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		C12B8F8C20028EEF00B5BC4F /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C16BCF381FFDDA33001C3619 /* ProfileViewController.swift */,
+				C12B8F8820028EBA00B5BC4F /* InterestCreator.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C12B8F8D20028F1400B5BC4F /* Replies */ = {
+			isa = PBXGroup;
+			children = (
+				C16BCF3E1FFEC72F001C3619 /* ReplyViewController.swift */,
+			);
+			path = Replies;
+			sourceTree = "<group>";
+		};
 		C12FF4E21FCE5018002E0E0F /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				C12FF4E31FCE501F002E0E0F /* User.swift */,
+				C13620B61FFC239B00460DD1 /* Message.swift */,
+				C12B8F80200273EA00B5BC4F /* Interest.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -194,11 +296,23 @@
 		C16348A41FC0F920006A85F2 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				C1B72BF71FFD3646008C2676 /* sukhumvit */,
 				C16348A51FC0F931006A85F2 /* Bebas */,
 				C16348A71FC0F932006A85F2 /* ostrich-sans */,
 				C16348A61FC0F932006A85F2 /* pacifico */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		C16BCF401FFEEA3F001C3619 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C1B72BF41FFC5951008C2676 /* MessageView.xib */,
+				C16BCF411FFEEA4D001C3619 /* Composer.xib */,
+				C12B8F82200274C900B5BC4F /* Interest.xib */,
+				C12B8F842002843200B5BC4F /* InterestCreator.xib */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		C19C10FE1FCF4E3E00113FAC /* Errors */ = {
@@ -212,10 +326,26 @@
 		C1AC807C1FBE737A00C54D3C = {
 			isa = PBXGroup;
 			children = (
+				C1B72BFA1FFD365A008C2676 /* SukhumvitSet-Bold.ttf */,
+				C1B72BFD1FFD365A008C2676 /* SukhumvitSet-Light.ttf */,
+				C1B72BF91FFD3659008C2676 /* SukhumvitSet-Medium.ttf */,
+				C1B72BFE1FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf */,
+				C1B72BFB1FFD365A008C2676 /* SukhumvitSet-Text.ttf */,
+				C1B72BFC1FFD365A008C2676 /* SukhumvitSet-Thin.ttf */,
+				C17BCBFD1FF0B177005FA873 /* Black.ttf */,
+				C17BCBFE1FF0B177005FA873 /* Bold.ttf */,
+				C17BCC021FF0B178005FA873 /* Bolder.ttf */,
+				C17BCC001FF0B178005FA873 /* HeavyBold.ttf */,
+				C17BCC011FF0B178005FA873 /* Normal.ttf */,
+				C17BCC031FF0B178005FA873 /* Thin.ttf */,
+				C17BCBFF1FF0B178005FA873 /* Thinner.ttf */,
 				C18B77691FC103E700D0617B /* BEBAS___.ttf */,
 				C18B77611FC1004D00D0617B /* OstrichSans-Black.otf */,
 				C18B77621FC1004D00D0617B /* OstrichSans-Bold.otf */,
 				C18B77631FC1004D00D0617B /* OstrichSans-Heavy.otf */,
+				C17BCBFB1FF0B0E0005FA873 /* Black.ttf */,
+				C17BCBFA1FF0B0DE005FA873 /* Bold.ttf */,
+				C17BCBFC1FF0B0E3005FA873 /* Bolder.ttf */,
 				C18B77601FC1004C00D0617B /* OstrichSans-Light.otf */,
 				C18B775F1FC1004C00D0617B /* OstrichSans-Medium.otf */,
 				C1AC80871FBE737A00C54D3C /* Boop */,
@@ -240,6 +370,7 @@
 		C1AC80871FBE737A00C54D3C /* Boop */ = {
 			isa = PBXGroup;
 			children = (
+				C16BCF401FFEEA3F001C3619 /* Views */,
 				C19C10FE1FCF4E3E00113FAC /* Errors */,
 				C12FF4E21FCE5018002E0E0F /* Models */,
 				C16348A31FC0F91A006A85F2 /* Assets */,
@@ -280,6 +411,9 @@
 			isa = PBXGroup;
 			children = (
 				C1AC80B91FBEA37E00C54D3C /* UIViewController.swift */,
+				C17CEEFD1FDB85CE0037E0D7 /* PillButton.swift */,
+				C1B72BF21FFC54DB008C2676 /* UIView.swift */,
+				C12B8F8E2002B25A00B5BC4F /* UIColor.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -287,8 +421,13 @@
 		C1AC80BB1FBF43CD00C54D3C /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				C12B8F8D20028F1400B5BC4F /* Replies */,
+				C12B8F8C20028EEF00B5BC4F /* Profile */,
+				C12B8F8B20028EDE00B5BC4F /* Navigation */,
+				C12B8F8A20028ED000B5BC4F /* Feed */,
 				C163489D1FC0E432006A85F2 /* Authentication */,
-				C168058D1FCE3E9A0093058C /* HomeController.swift */,
+				C13620B41FFC10AD00460DD1 /* MessageViewController.swift */,
+				C13620B81FFC369600460DD1 /* MessageTableView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -403,9 +542,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B72BFF1FFD365A008C2676 /* SukhumvitSet-Medium.ttf in Resources */,
+				C1B72C001FFD365A008C2676 /* SukhumvitSet-Bold.ttf in Resources */,
+				C1B72C011FFD365A008C2676 /* SukhumvitSet-Text.ttf in Resources */,
+				C1B72C021FFD365A008C2676 /* SukhumvitSet-Thin.ttf in Resources */,
+				C1B72C031FFD365A008C2676 /* SukhumvitSet-Light.ttf in Resources */,
+				C1B72C041FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf in Resources */,
+				C17BCC041FF0B178005FA873 /* Black.ttf in Resources */,
+				C1B72BF81FFD3646008C2676 /* sukhumvit in Resources */,
+				C17BCC051FF0B178005FA873 /* Bold.ttf in Resources */,
+				C17BCC061FF0B178005FA873 /* Thinner.ttf in Resources */,
+				C17BCC071FF0B178005FA873 /* HeavyBold.ttf in Resources */,
+				C17BCC081FF0B178005FA873 /* Normal.ttf in Resources */,
+				C17BCC091FF0B178005FA873 /* Bolder.ttf in Resources */,
+				C1B72BF51FFC5951008C2676 /* MessageView.xib in Resources */,
+				C17BCC0A1FF0B178005FA873 /* Thin.ttf in Resources */,
 				C18B776A1FC103E700D0617B /* BEBAS___.ttf in Resources */,
 				C18B77641FC1004D00D0617B /* OstrichSans-Medium.otf in Resources */,
 				C18B77651FC1004D00D0617B /* OstrichSans-Light.otf in Resources */,
+				C16BCF421FFEEA4D001C3619 /* Composer.xib in Resources */,
+				C12B8F852002843200B5BC4F /* InterestCreator.xib in Resources */,
+				C12B8F83200274C900B5BC4F /* Interest.xib in Resources */,
 				C18B77661FC1004D00D0617B /* OstrichSans-Black.otf in Resources */,
 				C18B77671FC1004D00D0617B /* OstrichSans-Bold.otf in Resources */,
 				C18B77681FC1004D00D0617B /* OstrichSans-Heavy.otf in Resources */,
@@ -440,20 +597,26 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Boop/Pods-Boop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BAFluidView/BAFluidView.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/MRCountryPicker/MRCountryPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
+				"${BUILT_PRODUCTS_DIR}/UnderKeyboard/UnderKeyboard.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BAFluidView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRCountryPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UnderKeyboard.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -500,22 +663,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1B72BF31FFC54DB008C2676 /* UIView.swift in Sources */,
 				C1E482091FD635E1003F8ADF /* FinishProfileController.swift in Sources */,
 				C12FF4E41FCE501F002E0E0F /* User.swift in Sources */,
 				C12FF4EA1FCF1A6A002E0E0F /* ConfirmationController.swift in Sources */,
 				C16348A21FC0E691006A85F2 /* UIFadeSegue.swift in Sources */,
 				C19C11001FCF4E5200113FAC /* BoopRequestError.swift in Sources */,
+				C17CEF001FDBB1FF0037E0D7 /* BoopNavigationController.swift in Sources */,
+				C16BCF3F1FFEC72F001C3619 /* ReplyViewController.swift in Sources */,
+				C13620B51FFC10AD00460DD1 /* MessageViewController.swift in Sources */,
+				C12B8F81200273EA00B5BC4F /* Interest.swift in Sources */,
 				C1AC808B1FBE737A00C54D3C /* ViewController.swift in Sources */,
+				C12B8F8920028EBA00B5BC4F /* InterestCreator.swift in Sources */,
 				C163489F1FC0E44A006A85F2 /* AuthenticationNavigationController.swift in Sources */,
 				C1AC80B71FBE9FB100C54D3C /* LandingController.swift in Sources */,
+				C17CEEFE1FDB85CE0037E0D7 /* PillButton.swift in Sources */,
 				C12FF4E61FCE50CE002E0E0F /* State.swift in Sources */,
 				C12FF4DF1FCE496C002E0E0F /* HTTP.swift in Sources */,
 				C1AC80BA1FBEA37E00C54D3C /* UIViewController.swift in Sources */,
+				C16BCF3B1FFE9740001C3619 /* BoopPageViewController.swift in Sources */,
 				C168058E1FCE3E9A0093058C /* HomeController.swift in Sources */,
 				C12FF4DD1FCE4939002E0E0F /* Configuration.swift in Sources */,
+				C12B8F8F2002B25A00B5BC4F /* UIColor.swift in Sources */,
+				C13620B91FFC369600460DD1 /* MessageTableView.swift in Sources */,
+				C16BCF461FFEEC64001C3619 /* Composer.swift in Sources */,
 				C18D341A1FC1261900EFB705 /* LoginController.swift in Sources */,
+				C13620B71FFC239B00460DD1 /* Message.swift in Sources */,
 				C1AC80BD1FBF43DF00C54D3C /* RegistrationController.swift in Sources */,
 				C1AC80891FBE737A00C54D3C /* AppDelegate.swift in Sources */,
+				C16BCF391FFDDA33001C3619 /* ProfileViewController.swift in Sources */,
 				C12FF4E11FCE4E86002E0E0F /* Authentication.swift in Sources */,
 				C12FF4E81FCE5A60002E0E0F /* Elements.swift in Sources */,
 			);
@@ -685,6 +861,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92ASZT77BN;
 				INFOPLIST_FILE = Boop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gehly.Boop;
@@ -700,6 +877,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92ASZT77BN;
 				INFOPLIST_FILE = Boop/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = gehly.Boop;
