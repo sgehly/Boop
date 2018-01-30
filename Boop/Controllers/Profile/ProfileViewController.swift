@@ -9,42 +9,128 @@
 import Foundation
 import UIKit
 
-class ProfileViewController: UIViewController{
+class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UITextFieldDelegate{
     
-    @IBOutlet var pic: UIImageView!
-    
-    var creator: InterestCreator = InterestCreator();
+    var creator: InterestCreator? = nil;
     var parentVC: BoopPageViewController? = nil;
     
+    @IBOutlet var scrollView: UIScrollView!
+    @IBOutlet var containerView: UIView!
+    
+    @IBOutlet var gradientView: UIView!
+    @IBOutlet var featuredCollectionView: InterestExploreCollectionView!
+    @IBOutlet var trendingCollectonView: InterestExploreCollectionView!
+    @IBOutlet var personalCollectionView: InterestExploreCollectionView!
+    
+    @IBOutlet var searchBar: UITextField!
+
+    func getGradient() -> CAGradientLayer{
+        let interestGradient: CAGradientLayer! = CAGradientLayer()
+        interestGradient.frame = self.view.bounds
+        interestGradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
+        interestGradient.locations = [0.0, 0.025, 0.975, 1]
+        interestGradient.startPoint = CGPoint(x: 0.0, y: 0.5)
+        interestGradient.endPoint = CGPoint(x: 1.0, y: 0.5)
+        return interestGradient;
+    }
+    
+    func addTapToDismiss(view: UIView){
+        let scrollViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard));
+        scrollViewTapGestureRecognizer.numberOfTapsRequired = 1
+        scrollViewTapGestureRecognizer.isEnabled = true
+        scrollViewTapGestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(scrollViewTapGestureRecognizer)
+    }
+    
     override func viewDidLoad() {
+        creator = InterestCreator(parentVC: self);
+        creator!.reset();
         parentVC = self.parent as! BoopPageViewController;
-        pic.layer.cornerRadius = pic.frame.height/2;
-        pic.clipsToBounds = true;
-        pic.layer.masksToBounds = true;
-        self.view.addSubview(creator.view);
+        searchBar.setLeftPaddingPoints(25);
+        searchBar.layer.cornerRadius = searchBar.frame.height/2;
+        self.view.addSubview(creator!.view);
+        containerView.frame = scrollView.frame;
+        /*let gradient: CAGradientLayer! = CAGradientLayer()
+        gradient.frame = self.view.bounds
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.locations = [0.057, 0.065, 0.85, 0.87]
+        gradientView.layer.mask = gradient;*/
+        
+        searchBar.delegate = self;
+        scrollView.delegate = self;
+        /*personalCollectionView.superview!.layer.mask = getGradient();
+        featuredCollectionView.superview!.layer.mask = getGradient();
+        trendingCollectonView.superview!.layer.mask = getGradient();*/
+        
+        addTapToDismiss(view: personalCollectionView)
+        addTapToDismiss(view: featuredCollectionView)
+        addTapToDismiss(view: trendingCollectonView)
+        
+        personalCollectionView.populate(interests: currentUser!.interests);
+        
+        getRequest(endpoint: "interests/featured")
+        .then { response -> Void in
+            
+            var interestArray: [Interest] = [];
+            
+            let array = response["message"]["interests"].arrayValue
+            
+            for interest in array{
+                interestArray.append(Interest(name: interest["name"].stringValue, color: UIColor().HexToColor(hexString: interest["color"].stringValue), order: 0))
+            }
+    
+            self.featuredCollectionView.populate(interests: interestArray)
+        }
+        
+        getRequest(endpoint: "interests/popular")
+        .then{ response -> Void in
+            
+            var interestArray: [Interest] = [];
+            
+            let array = response["message"]["interests"].arrayValue
+            
+            for interest in array{
+                interestArray.append(Interest(name: interest["name"].stringValue, color: UIColor().HexToColor(hexString: interest["color"].stringValue), order: 0))
+            }
+            
+            self.trendingCollectonView.populate(interests: interestArray)
+            
+        }
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        //creator!.reset();
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        exitCreator();
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+    }
+    
+    @objc func dismissKeyboard(){
+        searchBar.resignFirstResponder();
+    }
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dismissKeyboard();
     }
     
     
     func enterCreator(){
-        
         parentVC?.dataSource = nil
         
-        print(creator.cancelButton);
-        creator.cancelButton.addTarget(self, action: #selector(exitCreator), for: UIControlEvents.touchUpInside)
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            self.creator.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height);
-        }, completion: {completed in })
-        self.creator.interestField.becomeFirstResponder();
+        self.creator!.animateDown();
     }
     
     @objc func exitCreator(){
         
         parentVC?.dataSource = parentVC
-        
-        UIView.animate(withDuration: 0.25, animations: {
-            self.creator.view.frame = CGRect(x: 0, y: -self.creator.view.frame.height, width: self.view.frame.width, height: self.creator.view!.frame.height);
-        }, completion: {completed in })
+    
     }
     
     @IBAction func tapAdd(_ sender: UIButton) {

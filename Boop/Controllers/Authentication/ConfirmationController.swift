@@ -18,6 +18,7 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
     @IBOutlet var char4: UITextField!
     @IBOutlet var char5: UITextField!
     
+    @IBOutlet var backButton: PillButton!
     var textFieldArray: [UITextField] = [];
     var first = false
     
@@ -26,8 +27,8 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
     func addBottomBorder(view: UIView!){
         print(view);
         let bottomLine = CALayer()
-        bottomLine.frame = CGRect(x: 0.0, y: view!.frame.height - 1, width: view!.frame.width, height: 1.0)
-        bottomLine.backgroundColor = UIColor.darkGray.cgColor;
+        bottomLine.frame = CGRect(x: 0.0, y: view!.frame.height - 2, width: view!.frame.width, height: 2.0)
+        bottomLine.backgroundColor = UIColor.lightGray.cgColor;
         view.layer.addSublayer(bottomLine)
     }
     
@@ -45,7 +46,6 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
             addBottomBorder(view: textField);
             textField.tag = index;
             textField.delegate = self;
-            textField.backgroundColor = UIColor.white;
         }
         
         char1.becomeFirstResponder();
@@ -84,22 +84,42 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
         if(textField.tag == textFieldArray.count-1){
             //Continue.
             print("Continue on")
+            
+            textFieldArray.last!.resignFirstResponder();
+            
             var generatedCode = "";
             for textField in textFieldArray{
                 generatedCode += textField.text!;
+                textField.disable();
             }
+            backButton.disable()
+            
+            print("Calling URL");
             postRequest(endpoint: "users/auth/verify", body: ["code": generatedCode])
             .then { response -> Void in
+                print("Got response in original call");
+                for textField in self.textFieldArray{
+                    textField.enable();
+                }
+                self.backButton.enable();
+                
                 if(response["message"]["loginUser"].boolValue){
-                    setLogin(uuid: response["message"]["data"]["uuid"].stringValue, token: response["message"]["data"]["accessToken"].stringValue)
-                    self.navigationController?.dismiss(animated: true, completion: {
-                        self.routeTo(identifier: "boopNavigation");
-                    })
+                    currentUser!.setLogin(uuid: response["message"]["data"]["uuid"].stringValue, token: response["message"]["data"]["accessToken"].stringValue)
+                    self.navigationController!.parent!.navigationController!.goRootAndPresent(to: "mainNav", withController: GlobalBoopNavigation())
+                    self.navigationController!.parent!.dismiss(animated: true, completion: nil)
                 }else{
-                    self.navigationRouteTo(identifier: "finishSignup", controller: FinishProfileController())
+                    let parent = self.navigationController!.parent! as! AuthenticationSingularity;
+                    parent.changeToRed();
+                    self.navigationController!.go(to: "finishSignup", withController: FinishProfileController())
                 }
             }
             .catch { error -> Void in
+                
+                for textField in self.textFieldArray{
+                    textField.enable();
+                }
+                self.backButton.enable();
+                
                 self.clearAllFields();
                 if let err = error as? BoopRequestError{
                     switch err{
@@ -115,7 +135,7 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
                             }else{
                                 self.prompt(title: "Incorrect Code", message: "Please re-enter your phone number and try again.")
                                     .then { response in
-                                        self.navigationRouteBack();
+                                        self.goBack("");
                                 }
                             }
                         }
@@ -137,7 +157,7 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func goBack(_ sender: Any) {
-        self.navigationRouteBack();
+        self.navigationController?.goBack();
     }
     
     /*

@@ -14,19 +14,24 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
     var pages: [UIViewController] = [];
     var doScroll = true;
     var index: Int = 1;
-    
+    var lastIndex: Int = 1;
+    var tempIndex: Int = 1;
+    var lastPercentage: CGFloat = 0;
+
     override func viewDidLoad() {
-        super.viewDidLoad()
+        super.viewDidLoad();
         
         self.delegate = self
         self.dataSource = self
-                
-        let replies: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "replies")
         
-        let live: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "live")
+        let replies: ReplyViewController! = storyboard!.instantiateViewController(withIdentifier: "replies") as! ReplyViewController
         
-        let profile: UIViewController! = storyboard?.instantiateViewController(withIdentifier: "profile")
+        let live: HomeController! = storyboard!.instantiateViewController(withIdentifier: "live") as! HomeController
         
+        let profile: UIViewController! = storyboard!.instantiateViewController(withIdentifier: "profile")
+        
+        socketManager = SocketBridge(liveView: live, replyView: replies);
+
         pages.append(replies)
         pages.append(live)
         pages.append(profile)
@@ -40,7 +45,8 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
         if(toIndex < index){
             dir = .reverse
         }
-        index = toIndex
+        lastIndex = index;
+        tempIndex = toIndex;
         setViewControllers([pages[toIndex]], direction: dir, animated: true, completion: nil)
     }
     
@@ -51,7 +57,6 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
         }
         
         let currentIndex = pages.index(of: viewController)!
-        print("Index After", currentIndex, pages.count)
         if(currentIndex+1 < pages.count){
             return pages[currentIndex+1];
         }else{
@@ -72,10 +77,13 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
             return nil;
         }
     }
+    
+    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+        tempIndex = pages.index(of: pendingViewControllers.first!)!;
+        lastPercentage = 0;
+        //print("Switching from", lastIndex, "to", tempIndex)
+    }
     func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool){
-        
-        print("Index Check", pages.index(of: previousViewControllers[0]), pages.index(of: self.viewControllers![0]))
-        index = pages.index(of: self.viewControllers![0])!
     }
     
     func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {

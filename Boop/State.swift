@@ -9,3 +9,4 @@
 import Foundation
 
 var currentUser: User? = nil;
+var socketManager: SocketBridge? = nil;

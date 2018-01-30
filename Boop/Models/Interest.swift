@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-class Interest{
+class Interest: NSObject, NSCoding {
     
     var name: String
     var color: UIColor
@@ -26,6 +26,20 @@ class Interest{
         self.room = name.lowercased()
                         .replacingOccurrences(of: " ", with: "-", options: .literal, range: nil)
                         .filter{okayChars.contains($0)}
+    }
+    
+    required public init(coder decoder: NSCoder) {
+        self.name = decoder.decodeObject(forKey: "name") as? String ?? ""
+        self.color = decoder.decodeObject(forKey: "color") as? UIColor ?? boopColor
+        self.order = decoder.decodeObject(forKey: "order") as? Int ?? 0
+        self.room = decoder.decodeObject(forKey: "room") as? String ?? ""
+    }
+    
+    public func encode(with coder: NSCoder) {
+        coder.encode(name, forKey: "name")
+        coder.encode(color, forKey: "color")
+        coder.encode(order, forKey: "order")
+        coder.encode(room, forKey: "room")
     }
     
 }

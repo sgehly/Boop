@@ -8,13 +8,10 @@
 
 import Foundation
 import UIKit
-import UnderKeyboard
 import KeychainAccess
 
 class FinishProfileController: UIViewController {
     
-    let keyboardConstraint = UnderKeyboardLayoutConstraint()
-    let keyboardObserver = UnderKeyboardObserver()
     var originalExtraSpace: CGFloat = 0;
     
     @IBOutlet var bottomConstraint: NSLayoutConstraint!
@@ -23,21 +20,33 @@ class FinishProfileController: UIViewController {
     
     @IBOutlet var displayName: UITextField!
     
+    @IBOutlet var finishButton: PillButton!
+    
     @IBAction func done(_ sender: Any) {
+        
+        finishButton.disable();
+        displayName.disable();
+        
         postRequest(endpoint: "users/auth/final", body: [
             "displayName": displayName.text
         ])
         .then { response -> Void in
             
+            self.finishButton.enable();
+            self.displayName.enable();
+            
             currentUser!.setName(name: self.displayName.text!)
             
-            setLogin(uuid: response["message"]["uuid"].stringValue, token: response["message"]["accessToken"].stringValue)
+            currentUser!.setLogin(uuid: response["message"]["uuid"].stringValue, token: response["message"]["accessToken"].stringValue)
             
-            self.navigationController?.dismiss(animated: true, completion: {
-                self.routeTo(identifier: "boopNavigation");
-            })
+            self.navigationController!.parent!.navigationController!.goRootAndPresent(to: "mainNav", withController: GlobalBoopNavigation())
+            self.navigationController!.parent!.dismiss(animated: true, completion: nil)
         }
         .catch { error -> Void in
+            
+            self.finishButton.enable();
+            self.displayName.enable();
+            
                 if let err = error as? BoopRequestError{
                     switch err{
                     case .HTTPError(let message):
@@ -53,26 +62,6 @@ class FinishProfileController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        originalExtraSpace = extraSpaceConstraint.constant;
-        
-        keyboardObserver.start()
-        
-        // Called before the keyboard is animated
-        keyboardObserver.willAnimateKeyboard = { height in
-            print(height);
-            self.bottomConstraint.constant = -height
-
-            if(height == 0){
-                self.extraSpaceConstraint.constant = self.originalExtraSpace;
-            }else{
-                self.extraSpaceConstraint.constant = 30;
-            }
-        }
-        
-        keyboardObserver.animateKeyboard = { height in
-            self.view.layoutIfNeeded()
-        }
     }
     
     override func didReceiveMemoryWarning() {

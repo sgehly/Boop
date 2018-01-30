@@ -13,6 +13,7 @@ class Message {
     var author: User;
     var message: String;
     var available: Bool;
+    var expires: Date?;
     
     var timer: Timer?;
     
@@ -25,6 +26,7 @@ class Message {
         self.author = author;
         self.message = message;
         self.available = false;
+        self.expires = nil;
         self.timer = nil;
     }
 }

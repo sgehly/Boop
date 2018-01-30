@@ -10,19 +10,15 @@ import Foundation
 import UIKit
 import PromiseKit
 
-
 extension UIViewController {
     
-    
-
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true);
+        print("Test")
+       view.endEditing(true);
     }
-    
+
     func routeTo(identifier: String){
-        
         self.dismiss(animated: true, completion: nil);
-        
         var storyboard = UIStoryboard(name: "Main", bundle: nil)
         var ivc = storyboard.instantiateViewController(withIdentifier: identifier)
         ivc.modalTransitionStyle = .crossDissolve
@@ -30,31 +26,22 @@ extension UIViewController {
         self.present(ivc, animated: true, completion: nil)
     }
     
-    func navigationRouteBack(){
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        transition.type = kCATransitionFade
-        self.navigationController?.view.layer.add(transition, forKey: nil)
-        self.navigationController?.popViewController(animated: false);
-    }
-    
-    func navigationRouteTo<T>(identifier: String, controller: T){
+    func continuePrompt(title: String, message: String) -> Promise<Int> {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
-        let nvc = self.storyboard?.instantiateViewController(withIdentifier: identifier) as! T
-        
-        let controllerCast = nvc as! UIViewController
-        
-        controllerCast.modalTransitionStyle = .crossDissolve
-        controllerCast.modalPresentationStyle = .custom;
-        
-        let transition = CATransition()
-        transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        transition.type = kCATransitionFade
-        self.navigationController?.view.layer.add(transition, forKey: nil)
-        self.navigationController?.pushViewController(controllerCast, animated: false);
-
+        return Promise { fulfill, reject in
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
+                fulfill(0);
+            }
+            let doAction = UIAlertAction(title: "OK", style: .cancel) { action in
+                fulfill(1);
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(doAction)
+            
+            self.present(alertController, animated: true, completion: {})
+        }
     }
     
     func prompt(title: String, message: String) -> Promise<Any?> {

@@ -14,19 +14,20 @@ class MessageTableView: UITableView, UITableViewDelegate, UITableViewDataSource{
     var cells: [MessageTableViewCell] = [];
     
     var noView: UIView? = nil;
+    let generator = UIImpactFeedbackGenerator(style: UIImpactFeedbackStyle.heavy)
     
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
-        self.delegate = self;
         self.dataSource = self;
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.delegate = self;
         self.dataSource = self;
-        self.tableFooterView = UIView(frame: CGRect.zero)
-        self.contentInset = UIEdgeInsetsMake(15, 0, 0, 0)
+        
+        self.contentInset = UIEdgeInsetsMake(10, 0, 10, 0)
+        self.layer.shadowColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.2).cgColor;
+        self.layer.shadowRadius = 3;
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -37,22 +38,23 @@ class MessageTableView: UITableView, UITableViewDelegate, UITableViewDataSource{
         return cells[indexPath.row];
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return cells[indexPath.row].getHeight();
-    }
-    
-    
     func addMessage(message: Message){
-
+        self.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        self.tableFooterView = UIView(frame: CGRect.zero)
+        
         let cell = MessageTableViewCell(style: .default, reuseIdentifier: "thing", table: self, index: cells.count, message: message);
         
         self.beginUpdates();
-        cells.append(cell);        
-        self.insertRows(at: [IndexPath(row: cells.count-1, section: 0)], with: UITableViewRowAnimation.fade)
+        cells.insert(cell, at: 0);
+        self.insertRows(at: [IndexPath(row: 0, section: 0)], with: UITableViewRowAnimation.fade)
         self.endUpdates();
         
-        if(noView != nil){
-            noView?.isHidden = cells.count > 0;
+        if(noView != nil && cells.count > 0 && noView!.alpha != 0){
+            noView!.isUserInteractionEnabled = false;
+            noView!.alpha = 1;
+            UIView.animate(withDuration: 0.5, animations: {
+                self.noView!.alpha = 0;
+            })
         }
     }
     
@@ -71,8 +73,12 @@ class MessageTableView: UITableView, UITableViewDelegate, UITableViewDataSource{
         self.deleteRows(at: [lookupIndex], with: UITableViewRowAnimation.fade)
         self.endUpdates();
         
-        if(noView != nil){
-            noView?.isHidden = cells.count > 0;
+        if(noView != nil && cells.count == 0){
+            noView!.isUserInteractionEnabled = false;
+            noView!.alpha = 0;
+            UIView.animate(withDuration: 0.5, animations: {
+                self.noView!.alpha = 1;
+            })
         }
     }
     

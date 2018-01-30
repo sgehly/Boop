@@ -17,26 +17,11 @@ func tryLogin(uuid: String, token: String) -> Promise<Any?>{
 
         postRequest(endpoint: "users/auth/login", body: ["uuid": uuid, "token": token])
             .then { response -> Void in
-                currentUser = User(displayName: response["message"]["name"].stringValue,
-                                   phoneNumber: response["message"]["phone"].stringValue,
-                                   uuid: uuid,
-                                   accessToken: token)
+                print("Logged in!")
                 fulfill(nil);
             }
             .catch { error in
                 reject(error);
             }
-    }
-}
-
-//For setting known credentials
-func setLogin(uuid: String, token: String){
-    let keychain = Keychain(service: "sh.boop.login");
-    do{
-        try keychain.set(uuid, key: "identifier");
-        try keychain.set(token, key: "token")
-    }
-    catch let error{
-        print(error);
     }
 }

@@ -11,8 +11,9 @@ target 'Boop' do
   pod 'KeychainAccess'
   pod 'MRCountryPicker', '~> 0.0.7'
   pod 'PhoneNumberKit', '~> 2.1'
-  pod 'UnderKeyboard', '~> 11.0'
   pod 'BAFluidView'
   pod 'UITextView+Placeholder', '~> 1.2'
-
+  pod 'IGColorPicker', :git => 'https://github.com/iGenius-Srl/IGColorPicker.git', :branch => 'swift-4'
+  pod 'SwiftyShadow', '~> 1.6.0'
+  pod 'Socket.IO-Client-Swift', '~> 13.1.0'
 end
