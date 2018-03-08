@@ -10,7 +10,7 @@ import UIKit
 import MRCountryPicker
 import PhoneNumberKit
 
-class RegistrationController: UIViewController, MRCountryPickerDelegate {
+class RegistrationController: UITapToDismissViewController, MRCountryPickerDelegate {
     
     @IBOutlet var phoneNumber: PhoneNumberTextField!
     @IBOutlet var countryImg: UIImageView!
@@ -114,6 +114,9 @@ class RegistrationController: UIViewController, MRCountryPickerDelegate {
                 return self.showError(title: "Registration Error", message: response["message"].stringValue);
             }
             currentUser = User(displayName: "Simon", phoneNumber: self.phoneCode+self.phoneNumber.nationalNumber, uuid: nil, accessToken: nil);
+            
+            let parent = self.navigationController!.parent! as! AuthenticationSingularity;
+            parent.changeToOrange();
             
             return self.navigationController!.go(to: "confirmNumber", withController: ConfirmationController());
         }

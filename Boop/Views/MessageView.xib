@@ -9,20 +9,20 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SukhumvitSet-Bold.ttf">
-            <string>SukhumvitSet-Bold</string>
+        <array key="Black.ttf">
+            <string>Heebo-ExtraBold</string>
         </array>
-        <array key="SukhumvitSet-Text.ttf">
-            <string>SukhumvitSet-Text</string>
+        <array key="Normal.ttf">
+            <string>Heebo-Regular</string>
         </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MessageViewController" customModule="Boop" customModuleProvider="target">
             <connections>
                 <outlet property="box" destination="7YU-jP-Y30" id="NaV-Nq-kDP"/>
+                <outlet property="colorBox" destination="4PH-7U-4Ei" id="Z3X-Eo-zV5"/>
                 <outlet property="displayName" destination="jy7-qX-xvj" id="KBx-vI-6EV"/>
-                <outlet property="menu" destination="kru-Fh-tDe" id="nSi-sv-KKN"/>
-                <outlet property="message" destination="DC3-wx-Sg3" id="4pm-rK-SqA"/>
+                <outlet property="message" destination="Ief-Gx-ZEe" id="NTa-AB-kFe"/>
                 <outlet property="profilePic" destination="paG-rE-OsU" id="zln-wd-1Kh"/>
                 <outlet property="timerBox" destination="wrp-1N-4jL" id="yM3-OS-pDw"/>
                 <outlet property="view" destination="iN0-l3-epB" id="8ji-FF-DNa"/>
@@ -30,46 +30,51 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="345" height="115"/>
+            <rect key="frame" x="0.0" y="0.0" width="345" height="81"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YU-jP-Y30">
-                    <rect key="frame" x="0.0" y="0.0" width="345" height="115"/>
+                <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7YU-jP-Y30" customClass="SubtleCurvedShadowView" customModule="Boop" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="345" height="81"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Simon" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jy7-qX-xvj">
-                            <rect key="frame" x="56" y="17" width="207" height="22"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="SukhumvitSet-Bold" family="Sukhumvit Set" pointSize="17"/>
-                            <color key="textColor" red="0.19215686269999999" green="0.22352941179999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wrp-1N-4jL">
-                            <rect key="frame" x="324" y="0.0" width="21" height="114"/>
+                            <rect key="frame" x="324" y="0.0" width="21" height="124"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.19215686269999999" green="0.22352941179999999" blue="0.38823529410000002" alpha="0.10102739726027397" colorSpace="custom" customColorSpace="sRGB"/>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="profile" translatesAutoresizingMaskIntoConstraints="NO" id="paG-rE-OsU">
-                            <rect key="frame" x="8" y="11" width="45" height="45"/>
+                        <view clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4PH-7U-4Ei">
+                            <rect key="frame" x="12" y="12" width="55" height="55"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                    <integer key="value" value="5"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </imageView>
-                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" scrollEnabled="NO" editable="NO" text="We can boop if we want to, we can leave your friends behind" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DC3-wx-Sg3">
-                            <rect key="frame" x="8" y="46" width="297" height="71"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="defaultCatmoji" translatesAutoresizingMaskIntoConstraints="NO" id="paG-rE-OsU">
+                                    <rect key="frame" x="10" y="10" width="35" height="35"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="5"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" red="0.12156862745098039" green="0.69019607843137254" blue="0.82352941176470584" alpha="1" colorSpace="calibratedRGB"/>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Simon" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jy7-qX-xvj">
+                            <rect key="frame" x="75" y="17" width="237" height="24"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" name="Heebo-ExtraBold" family="Heebo" pointSize="14"/>
                             <color key="textColor" red="0.19215686269999999" green="0.22352941179999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <fontDescription key="fontDescription" name="SukhumvitSet-Text" family="Sukhumvit Set" pointSize="17"/>
-                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                        </textView>
-                        <imageView alpha="0.45000000000000001" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="menu" translatesAutoresizingMaskIntoConstraints="NO" id="kru-Fh-tDe">
-                            <rect key="frame" x="291" y="8" width="30" height="28"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="boolean" keyPath="adjustsFontSizeToFitWidth" value="YES"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ief-Gx-ZEe">
+                            <rect key="frame" x="75" y="29" width="237" height="38"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </imageView>
+                            <fontDescription key="fontDescription" name="Heebo-Regular" family="Heebo" pointSize="14"/>
+                            <color key="textColor" red="0.19215686269999999" green="0.22352941179999999" blue="0.38823529410000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <userDefinedRuntimeAttributes>
@@ -82,11 +87,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <point key="canvasLocation" x="-127.5" y="-374.5"/>
+            <point key="canvasLocation" x="-127.5" y="-391.5"/>
         </view>
     </objects>
     <resources>
-        <image name="menu" width="50" height="50"/>
-        <image name="profile" width="50" height="50"/>
+        <image name="defaultCatmoji" width="62" height="60"/>
     </resources>
 </document>

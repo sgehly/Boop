@@ -10,7 +10,7 @@
 import UIKit
 import KeychainAccess
 
-class ConfirmationController: UIViewController, UITextFieldDelegate {
+class ConfirmationController: UITapToDismissViewController, UITextFieldDelegate {
 
     @IBOutlet var char1: UITextField!
     @IBOutlet var char2: UITextField!
@@ -109,7 +109,7 @@ class ConfirmationController: UIViewController, UITextFieldDelegate {
                     self.navigationController!.parent!.dismiss(animated: true, completion: nil)
                 }else{
                     let parent = self.navigationController!.parent! as! AuthenticationSingularity;
-                    parent.changeToRed();
+                    parent.changeToGreen();
                     self.navigationController!.go(to: "finishSignup", withController: FinishProfileController())
                 }
             }

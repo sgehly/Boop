@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import KeychainAccess
 
-class FinishProfileController: UIViewController {
+class FinishProfileController: UITapToDismissViewController {
     
     var originalExtraSpace: CGFloat = 0;
     

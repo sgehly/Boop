@@ -17,10 +17,11 @@ class MessageViewController: UIViewController{
     @IBOutlet var profilePic: UIImageView!;
     @IBOutlet var displayName: UILabel!;
     @IBOutlet var locationTag: UILabel!;
-    @IBOutlet var message: UITextView!;
+    @IBOutlet var message: UILabel!;
     @IBOutlet var box: UIView!
     @IBOutlet var timerBox: UIView!
-    @IBOutlet var menu: UIImageView!
+    @IBOutlet var colorBox: UIView!
+    //@IBOutlet var menu: UIImageView!
     var timerView: BAFluidView? = nil;
 
     //Needed for removal from the table.
@@ -36,13 +37,17 @@ class MessageViewController: UIViewController{
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.box.layer.opacity = 0.8
+        self.box.layer.opacity = 0.4
         generator.impactOccurred()
     }
-    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.box.layer.opacity = 0.4
+    }
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.box.layer.opacity = 1
+    }
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.box.layer.opacity = 1
-        generator.impactOccurred()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -59,7 +64,8 @@ class MessageViewController: UIViewController{
         timerView?.startAnimation()
         timerView?.sizeToFit()
         timerBox.addSubview(timerView!);
-        Timer.scheduledTimer(timeInterval: (TimeInterval(duration-(duration*(7/20)))), target: self, selector: #selector(changeToOrange), userInfo: nil, repeats: false)
+        
+        Timer.scheduledTimer(timeInterval: (TimeInterval(duration-(duration/2))), target: self, selector: #selector(changeToOrange), userInfo: nil, repeats: false)
         
         Timer.scheduledTimer(timeInterval: (TimeInterval(duration-(duration/4))), target: self, selector: #selector(changeToRed), userInfo: nil, repeats: false)
         
@@ -67,10 +73,12 @@ class MessageViewController: UIViewController{
     }
     
     @objc func changeToOrange(){
+        print("Change Orange")
         timerView?.fillColor = orangeColor
     }
     
     @objc func changeToRed(){
+        print("Change Red")
         timerView?.fillColor = redColor
     }
     
@@ -93,34 +101,33 @@ class MessageViewController: UIViewController{
         message.text = reference.message;
         displayName.text = reference.author.displayName;
         
-        message.isScrollEnabled = false;
-        message.sizeToFit()
+        displayName.sizeToFit();
+        message.sizeToFit();
         
-        
-        box.layer.shadowOffset =  CGSize(width: 0, height: 1)
-        box.layer.shadowColor = UIColor.gray.cgColor
-        box.layer.shadowRadius = 0.5
-        box.layer.shadowOpacity = 0.1
-        box.clipsToBounds = false;
-        box.layer.masksToBounds = false;
-        
-        
-        var finalBoxHeight = (message.frame.maxY-box.frame.minY)+15;
+        var finalBoxHeight = colorBox.frame.maxY+10;
+        if(message.frame.maxY > finalBoxHeight){
+            finalBoxHeight = message.frame.maxY+25;
+        }
         
         timerBox.frame = CGRect(x: box.frame.maxX-timerBox.frame.width, y: timerBox.frame.minY, width: timerBox.frame.width, height: finalBoxHeight)
-        timerBox.roundCorners([.topRight, .bottomRight], radius: 10)
+        timerBox.roundCorners([.topRight, .bottomRight], radius: 8)
+        
+        colorBox!.layer.cornerRadius = colorBox!.frame.height/2;
+        colorBox!.clipsToBounds = true;
+        colorBox!.layer.masksToBounds = true;
+        
         
         var frame = CGRect(x: 0, y: box.frame.minY, width: table.frame.width, height: finalBoxHeight+15);
         realFrame = frame;
         self.view.frame = frame;
         
-        box.frame = CGRect(x: box.frame.minX, y: box.frame.minY, width: self.view.frame.width-30, height: finalBoxHeight)
-        
         timerBox.frame = CGRect(x: box.frame.maxX-timerBox.frame.width, y: timerBox.frame.minY, width: timerBox.frame.width, height: finalBoxHeight)
         
-        message.frame = CGRect(x: message.frame.minX, y: message.frame.minY, width: timerBox.frame.minX-10-message.frame.minX, height: message.frame.height)
+        message.frame = CGRect(x: message.frame.minX, y: message.frame.minY+10, width: timerBox.frame.minX-10-message.frame.minX, height: message.frame.height)
         
-        menu.frame = CGRect(x: timerBox.frame.minX-10-menu.frame.width, y: menu.frame.minY, width: menu.frame.width, height: menu.frame.height)
+        box.frame = CGRect(x: box.frame.minX, y: box.frame.minY, width: self.view.frame.width-30, height: finalBoxHeight)
+
+        colorBox.center = CGPoint(x: colorBox.center.x, y: box.center.y);
         
         box.center = self.view.center
         

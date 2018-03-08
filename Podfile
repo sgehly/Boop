@@ -16,4 +16,6 @@ target 'Boop' do
   pod 'IGColorPicker', :git => 'https://github.com/iGenius-Srl/IGColorPicker.git', :branch => 'swift-4'
   pod 'SwiftyShadow', '~> 1.6.0'
   pod 'Socket.IO-Client-Swift', '~> 13.1.0'
+  pod "ESPullToRefresh"
+  pod 'SwiftyGiphy', '~> 1.0'
 end

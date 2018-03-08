@@ -7,9 +7,11 @@
 //
 
 import Foundation
+import ESPullToRefresh
 import UIKit
 
 class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UITextFieldDelegate{
+    
     
     var creator: InterestCreator? = nil;
     var parentVC: BoopPageViewController? = nil;
@@ -19,21 +21,11 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectio
     
     @IBOutlet var gradientView: UIView!
     @IBOutlet var featuredCollectionView: InterestExploreCollectionView!
-    @IBOutlet var trendingCollectonView: InterestExploreCollectionView!
+    @IBOutlet var trendingCollectionView: InterestExploreCollectionView!
     @IBOutlet var personalCollectionView: InterestExploreCollectionView!
     
     @IBOutlet var searchBar: UITextField!
 
-    func getGradient() -> CAGradientLayer{
-        let interestGradient: CAGradientLayer! = CAGradientLayer()
-        interestGradient.frame = self.view.bounds
-        interestGradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
-        interestGradient.locations = [0.0, 0.025, 0.975, 1]
-        interestGradient.startPoint = CGPoint(x: 0.0, y: 0.5)
-        interestGradient.endPoint = CGPoint(x: 1.0, y: 0.5)
-        return interestGradient;
-    }
-    
     func addTapToDismiss(view: UIView){
         let scrollViewTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard));
         scrollViewTapGestureRecognizer.numberOfTapsRequired = 1
@@ -42,6 +34,14 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectio
         view.addGestureRecognizer(scrollViewTapGestureRecognizer)
     }
     
+    override func viewDidLayoutSubviews() {
+        //containerView.frame = scrollView.frame;
+        featuredCollectionView.setRealWidth(realWidth: self.view.frame.width)
+        trendingCollectionView.setRealWidth(realWidth: self.view.frame.width)
+        personalCollectionView.setRealWidth(realWidth: self.view.frame.width)
+        
+        scrollView.contentOffset = CGPoint.zero;
+    }
     override func viewDidLoad() {
         creator = InterestCreator(parentVC: self);
         creator!.reset();
@@ -49,24 +49,28 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectio
         searchBar.setLeftPaddingPoints(25);
         searchBar.layer.cornerRadius = searchBar.frame.height/2;
         self.view.addSubview(creator!.view);
-        containerView.frame = scrollView.frame;
-        /*let gradient: CAGradientLayer! = CAGradientLayer()
-        gradient.frame = self.view.bounds
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.locations = [0.057, 0.065, 0.85, 0.87]
-        gradientView.layer.mask = gradient;*/
+        
+        scrollView.contentInsetAdjustmentBehavior = .never
+        
+        scrollView.contentInset = UIEdgeInsets.zero;
         
         searchBar.delegate = self;
         scrollView.delegate = self;
-        /*personalCollectionView.superview!.layer.mask = getGradient();
-        featuredCollectionView.superview!.layer.mask = getGradient();
-        trendingCollectonView.superview!.layer.mask = getGradient();*/
         
         addTapToDismiss(view: personalCollectionView)
         addTapToDismiss(view: featuredCollectionView)
-        addTapToDismiss(view: trendingCollectonView)
+        addTapToDismiss(view: trendingCollectionView)
         
-        personalCollectionView.populate(interests: currentUser!.interests);
+        featuredCollectionView.personalCollectionView = personalCollectionView;
+        trendingCollectionView.personalCollectionView = personalCollectionView;
+        featuredCollectionView.parentVC = self;
+        trendingCollectionView.parentVC = self;
+        featuredCollectionView.type = .exploratory
+        trendingCollectionView.type = .exploratory
+        personalCollectionView.type = .personal
+        
+        
+        personalCollectionView.populate(interests: currentUser!.interests, width: self.view.frame.width);
         
         getRequest(endpoint: "interests/featured")
         .then { response -> Void in
@@ -79,7 +83,7 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectio
                 interestArray.append(Interest(name: interest["name"].stringValue, color: UIColor().HexToColor(hexString: interest["color"].stringValue), order: 0))
             }
     
-            self.featuredCollectionView.populate(interests: interestArray)
+            self.featuredCollectionView.populate(interests: interestArray, width: self.view.frame.width)
         }
         
         getRequest(endpoint: "interests/popular")
@@ -93,14 +97,14 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectio
                 interestArray.append(Interest(name: interest["name"].stringValue, color: UIColor().HexToColor(hexString: interest["color"].stringValue), order: 0))
             }
             
-            self.trendingCollectonView.populate(interests: interestArray)
+            self.trendingCollectionView.populate(interests: interestArray, width: self.view.frame.width)
             
         }
     }
     
     
     override func viewWillAppear(_ animated: Bool) {
-        //creator!.reset();
+
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -123,23 +127,15 @@ class ProfileViewController: UIViewController, UIScrollViewDelegate, UICollectio
     
     func enterCreator(){
         parentVC?.dataSource = nil
-        
         self.creator!.animateDown();
     }
     
-    @objc func exitCreator(){
-        
+    func exitCreator(){
         parentVC?.dataSource = parentVC
-    
     }
     
     @IBAction func tapAdd(_ sender: UIButton) {
         enterCreator();
-    }
-    
-    @IBAction func backToHome(_ sender: Any) {
-        let parent = self.parent as! BoopPageViewController;
-        parent.changePage(toIndex: 1);
     }
     
 }

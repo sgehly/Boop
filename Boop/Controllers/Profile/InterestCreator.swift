@@ -70,14 +70,6 @@ class InterestCreator: UIViewController, ColorPickerViewDelegate, ColorPickerVie
         if(!interestField.isFirstResponder){
             return;
         }
-        /*if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
-            let keyboardRectangle = keyboardFrame.cgRectValue
-            
-            self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: keyboardRectangle.minY)
-            self.addButton.frame = CGRect(x: self.addButton.frame.minX, y: keyboardRectangle.minY-self.addButton.frame.height-15, width: self.addButton.frame.width, height: self.addButton.frame.height)
-            self.cancelButton.frame = CGRect(x: self.cancelButton.frame.minX, y: self.addButton.frame.minY, width: self.cancelButton.frame.width, height: self.cancelButton.frame.height)
-            /*self.colorPickerView = ColorPickerView(frame: CGRect(x: cancelButton.frame.minX, y: labelColor.frame.maxY+5, width: addButton.frame.maxX-cancelButton.frame.minX, height: (cancelButton.frame.minY-10)-(labelColor.frame.maxY+5)))*/
-        }*/
         
         if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             let keyboardRectangle = keyboardFrame.cgRectValue
@@ -109,16 +101,7 @@ class InterestCreator: UIViewController, ColorPickerViewDelegate, ColorPickerVie
     }
     
     @IBAction func cancelInterest(_ sender: Any) {
-        print("Remove Observer");
-        NotificationCenter.default.removeObserver(observer!)
-        interestField!.resignFirstResponder()
-        UIView.animate(withDuration: 0.25, animations: {
-            self.view.frame = CGRect(x: 0, y: -self.view.frame.height-100, width: self.view.frame.width, height: self.view!.frame.height);
-        }, completion: {completed in
-            self.reset();
-        })
-        
-        parentVC!.exitCreator()
+        cancel();
     }
     
     func cancel(){
@@ -126,7 +109,11 @@ class InterestCreator: UIViewController, ColorPickerViewDelegate, ColorPickerVie
         interestField!.resignFirstResponder()
         self.interestField.text = "";
         self.colorPickerView.colors = self.colorPickerView.colors;
-        parentVC!.exitCreator()
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.frame = CGRect(x: 0, y: -self.view.frame.height, width: self.view.frame.width, height: self.view.frame.height);
+        }, completion: {completed in
+            self.parentVC!.exitCreator()
+        })
     }
     
     @IBAction func addInterest(_ sender: Any) {
@@ -148,18 +135,29 @@ class InterestCreator: UIViewController, ColorPickerViewDelegate, ColorPickerVie
             if(response["message"]["exists"].boolValue){
                 self.continuePrompt(title: self.interestField.text!, message: "This interest already exists. Do you want to join it?")
                 .then{ choiceCode -> Void in
-                    if(choiceCode == 0){
-                        self.cancel();
-                    }else{
+                    if(choiceCode != 0){
                         currentUser!.addInterest(interest: Interest(name: self.interestField.text!, color: self.color!, order: currentUser!.interests.count+1))
                     }
+                    self.cancel()
                 }
             }else{
                 currentUser!.addInterest(interest: Interest(name: self.interestField.text!, color: self.color!, order: currentUser!.interests.count+1))
+                self.cancel();
             }
         }
         .catch{ error in
-                
+            if let err = error as? BoopRequestError{
+                switch err{
+                case .HTTPError(let message):
+                    self.showError(title: "HTTP Error", message: message);
+                    break;
+                case .BoopError(let code, let message):
+                    self.showError(title: "Interest Creation Error "+String(code), message: message);
+                    break;
+                default:
+                    break;
+                }
+            }
         }
     }
     // This is an optional method

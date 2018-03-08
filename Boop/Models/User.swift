@@ -58,6 +58,10 @@ import KeychainAccess
         UserDefaults.standard.synchronize()
     }
     
+    func clearInterests(){
+        self.interests = [];
+        self.save();
+    }
     func addInterest(interest: Interest){
         self.interests.append(interest);
         self.save();

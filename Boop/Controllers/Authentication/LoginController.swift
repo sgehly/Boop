@@ -23,7 +23,7 @@ class LoginController: UIViewController {
     
     @IBAction func moveToPhoneEntry(_ sender: Any) {
         let parent = self.navigationController!.parent! as! AuthenticationSingularity;
-        parent.changeToOrange();
+        parent.changeToRed();
         self.navigationController!.go(to: "register", withController: RegistrationController())
     }
 }

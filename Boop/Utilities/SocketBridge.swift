@@ -16,15 +16,13 @@ class SocketBridge {
     var socket: SocketIOClient? = nil;
     
     var liveView: HomeController? = nil;
-    var replyView: ReplyViewController? = nil;
     
     func reconnect(){
         socket!.connect()
     }
     
-    init(liveView: HomeController, replyView: ReplyViewController){
+    init(liveView: HomeController){
         self.liveView = liveView;
-        self.replyView = replyView;
         manager = SocketManager(socketURL: URL(string: wsServer)!, config: [.log(true), .compress]);
         socket = manager?.defaultSocket;
         

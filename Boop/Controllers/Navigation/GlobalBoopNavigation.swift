@@ -11,12 +11,17 @@ import UIKit
 
 class GlobalBoopNavigation: UIViewController, UIScrollViewDelegate{
 
+    @IBOutlet var header: UIView!
     @IBOutlet var profileButton: UIButton!
     @IBOutlet var composeButton: UIButton!
     @IBOutlet var replyButton: UIButton!
     @IBOutlet var colorBGView: UIView!
     @IBOutlet var containerView: UIView!
+    @IBOutlet var profileColorBox: UIView!
+    @IBOutlet var navBar: UIView!
     
+    let menu:BoopMainMenu = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "mainMenu") as! BoopMainMenu
+
     var pageController: BoopPageViewController? = nil;
     init(){
         super.init(nibName: "mainNav", bundle: Bundle.main)
@@ -41,10 +46,10 @@ class GlobalBoopNavigation: UIViewController, UIScrollViewDelegate{
     
     override func viewDidLayoutSubviews() {
         pageController = self.childViewControllers.last! as! BoopPageViewController
+        pageController!.navigationParent = self;
          let scrollView = pageController!.view.subviews.filter { $0 is UIScrollView }.first as! UIScrollView
         scrollView.delegate = self as! UIScrollViewDelegate
         
-        containerView.cornerAndBorder(sides: [.top,.bottom], corners: [], color: transparent, thickness: 1, cornerRadius: 0)
     }
     
     
@@ -85,7 +90,7 @@ class GlobalBoopNavigation: UIViewController, UIScrollViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let point = scrollView.contentOffset
         var percentComplete: CGFloat
-        var buttonArray: [UIButton] = [replyButton, composeButton, profileButton];
+        //var buttonArray: [UIButton] = [replyButton, composeButton, profileButton];
 
         percentComplete = abs((point.x - view.frame.size.width)/view.frame.size.width)
         if(percentComplete > 1){
@@ -99,7 +104,7 @@ class GlobalBoopNavigation: UIViewController, UIScrollViewDelegate{
         }
         
         if(pageController!.lastIndex == pageController!.tempIndex && percentComplete != 0){
-            processButtons(buttonArray: buttonArray, percentComplete: percentComplete)
+            //processButtons(buttonArray: buttonArray, percentComplete: percentComplete)
             return;
         }
         
@@ -128,11 +133,24 @@ class GlobalBoopNavigation: UIViewController, UIScrollViewDelegate{
             return;
         }
         
-        processButtons(buttonArray: buttonArray, percentComplete: percentComplete)
+        //processButtons(buttonArray: buttonArray, percentComplete: percentComplete)
+    }
+    override func viewDidLoad() {
+       /* profileColorBox.layer.cornerRadius = profileColorBox.frame.height/2;
+        profileColorBox.layer.masksToBounds = true;
+        profileColorBox.clipsToBounds = true;*/
+        
+        navBar.layer.shadowColor = UIColor.lightGray.cgColor;
+        navBar.layer.shadowOpacity = 0.2;
+        navBar.layer.shadowRadius = 1.5;
+        
+        menu.view.frame = CGRect(x: -menu.view.frame.width, y: 0, width: menu.view.frame.width/2, height: navBar.frame.minY);
+        self.view.addSubview(menu.view)
     }
     
     required init?(coder aDecoder: NSCoder) {
         //super.init(nibName: "mainNav", bundle: Bundle.main);
         super.init(coder: aDecoder)
+        
     }
 }

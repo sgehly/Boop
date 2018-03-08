@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C10FD1CF2002E47F0087BEE7 /* InterestCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10FD1CE2002E47F0087BEE7 /* InterestCollectionView.swift */; };
+		C11AB1702045B238009E10A8 /* NavButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C11AB16F2045B238009E10A8 /* NavButton.swift */; };
 		C12B8F81200273EA00B5BC4F /* Interest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C12B8F80200273EA00B5BC4F /* Interest.swift */; };
 		C12B8F83200274C900B5BC4F /* Interest.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12B8F82200274C900B5BC4F /* Interest.xib */; };
 		C12B8F852002843200B5BC4F /* InterestCreator.xib in Resources */ = {isa = PBXBuildFile; fileRef = C12B8F842002843200B5BC4F /* InterestCreator.xib */; };
@@ -74,14 +75,19 @@
 		C1B72C021FFD365A008C2676 /* SukhumvitSet-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFC1FFD365A008C2676 /* SukhumvitSet-Thin.ttf */; };
 		C1B72C031FFD365A008C2676 /* SukhumvitSet-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFD1FFD365A008C2676 /* SukhumvitSet-Light.ttf */; };
 		C1B72C041FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C1B72BFE1FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf */; };
+		C1B7928F203B581200B1471A /* UITapToDismissViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B7928E203B581200B1471A /* UITapToDismissViewController.swift */; };
+		C1B79291203B672500B1471A /* GiphyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1B79290203B672500B1471A /* GiphyController.swift */; };
 		C1C5ECE7200AA7E500B2DDE8 /* AuthenticationSingularity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1C5ECE6200AA7E500B2DDE8 /* AuthenticationSingularity.swift */; };
 		C1CC7C72200B048000F6E2B1 /* UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC7C71200B048000F6E2B1 /* UIButton.swift */; };
 		C1CC7C76200D06AB00F6E2B1 /* YarnCount.xib in Resources */ = {isa = PBXBuildFile; fileRef = C1CC7C75200D06AB00F6E2B1 /* YarnCount.xib */; };
 		C1CC7C78200D06FD00F6E2B1 /* YarnCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC7C77200D06FD00F6E2B1 /* YarnCounter.swift */; };
 		C1CC7C7A200D249900F6E2B1 /* UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC7C79200D249900F6E2B1 /* UIImageView.swift */; };
 		C1CC7C7C200DA35E00F6E2B1 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1CC7C7B200DA35E00F6E2B1 /* ShadowView.swift */; };
+		C1D15D28204DFAA900DBDEE8 /* CenterTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D15D27204DFAA900DBDEE8 /* CenterTextView.swift */; };
+		C1D15D2A20506A1700DBDEE8 /* BoopMainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1D15D2920506A1700DBDEE8 /* BoopMainMenu.swift */; };
 		C1DD294D2011367600A0EF8B /* GlobalBoopNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1DD294C2011367600A0EF8B /* GlobalBoopNavigation.swift */; };
 		C1E482091FD635E1003F8ADF /* FinishProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1E482081FD635E1003F8ADF /* FinishProfileController.swift */; };
+		C1F5227020255E7200A25D51 /* ExploreLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F5226F20255E7200A25D51 /* ExploreLayout.swift */; };
 		C7460BD32C37079E4951C3D1 /* Pods_Boop.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B58F1D8684FCEEE3DBD013DE /* Pods_Boop.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,6 +112,7 @@
 		6F38EF8CE57F60D481862ECE /* Pods-Boop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boop.release.xcconfig"; path = "Pods/Target Support Files/Pods-Boop/Pods-Boop.release.xcconfig"; sourceTree = "<group>"; };
 		B58F1D8684FCEEE3DBD013DE /* Pods_Boop.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Boop.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C10FD1CE2002E47F0087BEE7 /* InterestCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestCollectionView.swift; sourceTree = "<group>"; };
+		C11AB16F2045B238009E10A8 /* NavButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavButton.swift; sourceTree = "<group>"; };
 		C12B8F80200273EA00B5BC4F /* Interest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interest.swift; sourceTree = "<group>"; };
 		C12B8F82200274C900B5BC4F /* Interest.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Interest.xib; sourceTree = "<group>"; };
 		C12B8F842002843200B5BC4F /* InterestCreator.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestCreator.xib; sourceTree = "<group>"; };
@@ -184,14 +191,19 @@
 		C1B72BFC1FFD365A008C2676 /* SukhumvitSet-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Thin.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Thin.ttf"; sourceTree = "<group>"; };
 		C1B72BFD1FFD365A008C2676 /* SukhumvitSet-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-Light.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-Light.ttf"; sourceTree = "<group>"; };
 		C1B72BFE1FFD365A008C2676 /* SukhumvitSet-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SukhumvitSet-SemiBold.ttf"; path = "Boop/Assets/Fonts/sukhumvit/SukhumvitSet-SemiBold.ttf"; sourceTree = "<group>"; };
+		C1B7928E203B581200B1471A /* UITapToDismissViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapToDismissViewController.swift; sourceTree = "<group>"; };
+		C1B79290203B672500B1471A /* GiphyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiphyController.swift; sourceTree = "<group>"; };
 		C1C5ECE6200AA7E500B2DDE8 /* AuthenticationSingularity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationSingularity.swift; sourceTree = "<group>"; };
 		C1CC7C71200B048000F6E2B1 /* UIButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButton.swift; sourceTree = "<group>"; };
 		C1CC7C75200D06AB00F6E2B1 /* YarnCount.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YarnCount.xib; sourceTree = "<group>"; };
 		C1CC7C77200D06FD00F6E2B1 /* YarnCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YarnCounter.swift; sourceTree = "<group>"; };
 		C1CC7C79200D249900F6E2B1 /* UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageView.swift; sourceTree = "<group>"; };
 		C1CC7C7B200DA35E00F6E2B1 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
+		C1D15D27204DFAA900DBDEE8 /* CenterTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterTextView.swift; sourceTree = "<group>"; };
+		C1D15D2920506A1700DBDEE8 /* BoopMainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoopMainMenu.swift; sourceTree = "<group>"; };
 		C1DD294C2011367600A0EF8B /* GlobalBoopNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalBoopNavigation.swift; sourceTree = "<group>"; };
 		C1E482081FD635E1003F8ADF /* FinishProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinishProfileController.swift; sourceTree = "<group>"; };
+		C1F5226F20255E7200A25D51 /* ExploreLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreLayout.swift; sourceTree = "<group>"; };
 		C3F3AC4BBE70D61E88C3616D /* Pods-Boop.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Boop.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Boop/Pods-Boop.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -250,6 +262,7 @@
 			children = (
 				C16BCF451FFEEC64001C3619 /* Composer.swift */,
 				C168058D1FCE3E9A0093058C /* HomeController.swift */,
+				C1B79290203B672500B1471A /* GiphyController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -260,6 +273,7 @@
 				C16BCF3A1FFE9740001C3619 /* BoopPageViewController.swift */,
 				C17CEEFF1FDBB1FF0037E0D7 /* BoopNavigationController.swift */,
 				C1DD294C2011367600A0EF8B /* GlobalBoopNavigation.swift */,
+				C1D15D2920506A1700DBDEE8 /* BoopMainMenu.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";
@@ -456,6 +470,10 @@
 				C15E3788201009D80025F651 /* CALayer.swift */,
 				C1AD724C2014F829000476C4 /* UITextField.swift */,
 				C13F55542015A90700D9BC1A /* UICollectionView.swift */,
+				C1F5226F20255E7200A25D51 /* ExploreLayout.swift */,
+				C1B7928E203B581200B1471A /* UITapToDismissViewController.swift */,
+				C11AB16F2045B238009E10A8 /* NavButton.swift */,
+				C1D15D27204DFAA900DBDEE8 /* CenterTextView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -645,14 +663,20 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-Boop/Pods-Boop-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BAFluidView/BAFluidView.framework",
+				"${BUILT_PRODUCTS_DIR}/ESPullToRefresh/ESPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/IGColorPicker/IGColorPicker.framework",
 				"${BUILT_PRODUCTS_DIR}/KeychainAccess/KeychainAccess.framework",
 				"${BUILT_PRODUCTS_DIR}/M13Checkbox/M13Checkbox.framework",
 				"${BUILT_PRODUCTS_DIR}/MRCountryPicker/MRCountryPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/NSTimer-Blocks/NSTimer_Blocks.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework",
 				"${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGiphy/SwiftyGiphy.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyShadow/SwiftyShadow.framework",
 				"${BUILT_PRODUCTS_DIR}/UITextView+Placeholder/UITextView_Placeholder.framework",
@@ -661,14 +685,20 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BAFluidView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ESPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGColorPicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KeychainAccess.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/M13Checkbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MRCountryPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSTimer_Blocks.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SocketIO.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Starscream.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGiphy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyShadow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITextView_Placeholder.framework",
@@ -733,18 +763,24 @@
 				C13620B51FFC10AD00460DD1 /* MessageViewController.swift in Sources */,
 				C12B8F81200273EA00B5BC4F /* Interest.swift in Sources */,
 				C1CC7C7C200DA35E00F6E2B1 /* ShadowView.swift in Sources */,
+				C1F5227020255E7200A25D51 /* ExploreLayout.swift in Sources */,
 				C1AC808B1FBE737A00C54D3C /* ViewController.swift in Sources */,
 				C12B8F8920028EBA00B5BC4F /* InterestCreator.swift in Sources */,
 				C10FD1CF2002E47F0087BEE7 /* InterestCollectionView.swift in Sources */,
 				C163489F1FC0E44A006A85F2 /* AuthenticationNavigationController.swift in Sources */,
+				C1D15D28204DFAA900DBDEE8 /* CenterTextView.swift in Sources */,
 				C17CEEFE1FDB85CE0037E0D7 /* PillButton.swift in Sources */,
 				C1C5ECE7200AA7E500B2DDE8 /* AuthenticationSingularity.swift in Sources */,
 				C12FF4E61FCE50CE002E0E0F /* State.swift in Sources */,
+				C1B79291203B672500B1471A /* GiphyController.swift in Sources */,
 				C1CC7C72200B048000F6E2B1 /* UIButton.swift in Sources */,
 				C12FF4DF1FCE496C002E0E0F /* HTTP.swift in Sources */,
 				C1AC80BA1FBEA37E00C54D3C /* UIViewController.swift in Sources */,
+				C11AB1702045B238009E10A8 /* NavButton.swift in Sources */,
+				C1D15D2A20506A1700DBDEE8 /* BoopMainMenu.swift in Sources */,
 				C16BCF3B1FFE9740001C3619 /* BoopPageViewController.swift in Sources */,
 				C168058E1FCE3E9A0093058C /* HomeController.swift in Sources */,
+				C1B7928F203B581200B1471A /* UITapToDismissViewController.swift in Sources */,
 				C12FF4DD1FCE4939002E0E0F /* Configuration.swift in Sources */,
 				C12B8F8F2002B25A00B5BC4F /* UIColor.swift in Sources */,
 				C13620B91FFC369600460DD1 /* MessageTableView.swift in Sources */,

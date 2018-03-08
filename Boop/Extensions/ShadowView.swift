@@ -19,16 +19,13 @@ class ShadowView: UIView{
         self.generateOuterShadow();
     }
     override func awakeFromNib() {
-        print("Test?");
         assignShadow();
     }
     override init(frame: CGRect) {
         super.init(frame: frame);
-        print("Init 3")
     }
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder);
-        print("Init 2");
         assignShadow();
         
     }

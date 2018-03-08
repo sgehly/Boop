@@ -13,8 +13,8 @@ import PromiseKit
 extension UIViewController {
     
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("Test")
-       view.endEditing(true);
+        //print("Test")
+       //view.endEditing(true);
     }
 
     func routeTo(identifier: String){
@@ -33,7 +33,7 @@ extension UIViewController {
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { action in
                 fulfill(0);
             }
-            let doAction = UIAlertAction(title: "OK", style: .cancel) { action in
+            let doAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) { action in
                 fulfill(1);
             }
             

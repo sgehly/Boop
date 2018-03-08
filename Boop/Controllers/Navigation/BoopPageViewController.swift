@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate {
+class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSource, UIPageViewControllerDelegate, UIScrollViewDelegate {
     
     var pages: [UIViewController] = [];
     var doScroll = true;
@@ -17,22 +17,30 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
     var lastIndex: Int = 1;
     var tempIndex: Int = 1;
     var lastPercentage: CGFloat = 0;
-
+    
+    var navigationParent: GlobalBoopNavigation? = nil;
+    
     override func viewDidLoad() {
         super.viewDidLoad();
         
         self.delegate = self
         self.dataSource = self
+
+        for view in self.view.subviews {
+            if let scrollView = view as? UIScrollView {
+                scrollView.delegate = self;
+            }
+        }
         
-        let replies: ReplyViewController! = storyboard!.instantiateViewController(withIdentifier: "replies") as! ReplyViewController
+        //let replies: ReplyViewController! = storyboard!.instantiateViewController(withIdentifier: "replies") as! ReplyViewController
         
         let live: HomeController! = storyboard!.instantiateViewController(withIdentifier: "live") as! HomeController
         
         let profile: UIViewController! = storyboard!.instantiateViewController(withIdentifier: "profile")
         
-        socketManager = SocketBridge(liveView: live, replyView: replies);
+        socketManager = SocketBridge(liveView: live);
 
-        pages.append(replies)
+        //pages.append(replies)
         pages.append(live)
         pages.append(profile)
 
@@ -47,7 +55,11 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
         }
         lastIndex = index;
         tempIndex = toIndex;
-        setViewControllers([pages[toIndex]], direction: dir, animated: true, completion: nil)
+        
+        DispatchQueue.main.async(execute: {
+            self.setViewControllers([self.pages[toIndex]], direction: dir, animated: true, completion: nil)
+        })
+
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
@@ -92,6 +104,20 @@ class BoopPageViewController: UIPageViewController, UIPageViewControllerDataSour
     
     func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
         return 0
+    }
+    
+    var lastPosition: CGFloat = 0;
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.lastPosition = scrollView.contentOffset.x
+        
+        if (index == pages.count - 1) && (lastPosition > scrollView.frame.width) {
+            scrollView.contentOffset.x = scrollView.frame.width
+            return
+            
+        } else if index == 0 && lastPosition < scrollView.frame.width {
+            scrollView.contentOffset.x = scrollView.frame.width
+            return
+        }
     }
     
 }

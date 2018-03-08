@@ -14,10 +14,14 @@ class HomeController: UIViewController, UIGestureRecognizerDelegate, UITableView
     
     @IBOutlet var header: UIView!
     @IBOutlet var messageTable: MessageTableView!
+    @IBOutlet var interestViewWrapper: UIView!
     var profileShouldComplete = false;
     var composer: Composer? = nil;
     var parentVC: BoopPageViewController? = nil;
     var observer: Any? = nil;
+    var menuOpen: Bool = false;
+
+    
     
     var generator = UIImpactFeedbackGenerator(style: .heavy)
     
@@ -31,39 +35,186 @@ class HomeController: UIViewController, UIGestureRecognizerDelegate, UITableView
     
     @IBOutlet var interestCollectionView: InterestCollectionView!
     
+    
+    func openMenu(){
+        let boopNav = parentVC!.navigationParent!;
+        print("Menu Open")
+        menuOpen = true;
+        
+        self.messageTable.isUserInteractionEnabled = false;
+        
+        for view in self.messageTable.subviews {
+            if let scrollView = view as? UIScrollView {
+                scrollView.isScrollEnabled = false;
+            }
+        }
+        
+        for view in parentVC!.view.subviews {
+            if let scrollView = view as? UIScrollView {
+                scrollView.bounces = false;
+                scrollView.isScrollEnabled = false;
+            }
+        }
+        
+        UIView.animate(withDuration: TimeInterval(0.2), animations: {
+            self.view.frame = CGRect(x: self.view.frame.width/2, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height)
+            boopNav.menu.view.frame = CGRect(x: 0, y: boopNav.menu.view.frame.minY, width: self.view.frame.width/2, height: boopNav.menu.view.frame.height);
+        }, completion: { completed in
+            //self.parentVC!.dataSource = nil;
+            //self.view.frame = CGRect(x: self.view.frame.width/2, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height)
+           // boopNav.menu.view.frame = CGRect(x: 0, y: boopNav.menu.view.frame.minY, width: boopNav.menu.view.frame.width, height: boopNav.menu.view.frame.height);
+        })
+    }
+    
+    func closeMenu(){
+        menuOpen = false;
+        let boopNav = parentVC!.navigationParent!;
+        print("Menu Close")
+        
+        self.messageTable.isUserInteractionEnabled = true;
+        
+        for view in self.messageTable.subviews {
+            if let scrollView = view as? UIScrollView {
+                scrollView.isScrollEnabled = true;
+            }
+        }
+        for view in self.parentVC!.view.subviews {
+            if let scrollView = view as? UIScrollView {
+                scrollView.bounces = true;
+                scrollView.isScrollEnabled = true;
+            }
+        }
+        
+        UIView.animate(withDuration: TimeInterval(0.2), animations: {
+            self.view.frame = CGRect(x: 0, y: self.view.frame.minY, width: self.view.frame.width, height: self.view.frame.height)
+            boopNav.menu.view.frame = CGRect(x: self.view.frame.minX-boopNav.menu.view.frame.width, y: boopNav.menu.view.frame.minY, width: boopNav.menu.view.frame.width, height: boopNav.menu.view.frame.height);
+        }, completion: { completed in
+        })
+    }
+    
+    @objc func openMenu(_ gestureRecognizer: UIPanGestureRecognizer) {
+        
+        let translation = gestureRecognizer.translation(in: self.view)
+        
+        if gestureRecognizer.state == .ended{
+            print("Ended");
+            
+            if(self.view.frame.minX > self.view.frame.width/6 && !menuOpen){
+                openMenu()
+            }
+            
+            if(self.view.frame.minX < self.view.frame.width/6 && !menuOpen){
+                closeMenu();
+            }
+            
+            if(self.view.frame.minX < self.view.frame.width/2 && menuOpen){
+                closeMenu()
+            }
+            
+            //gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+
+        }
+        
+        if gestureRecognizer.state == .began || gestureRecognizer.state == .changed {
+            
+            let boopNav = parentVC!.navigationParent!;
+            
+            if(self.view.frame.minX < 0 || self.view.frame.minX > self.view.frame.width/2){
+                if(self.view.frame.minX > self.view.frame.width/6 && translation.x > 0){
+                   // openMenu();
+                    return;
+                }
+                
+                if(self.view.frame.minX < self.view.frame.width/6 && translation.x < 0){
+                    //closeMenu();
+                    return;
+                }
+                
+            }
+                        
+            if(translation.x > 0){
+                self.messageTable.isUserInteractionEnabled = false;
+                
+                for view in self.messageTable.subviews {
+                    if let scrollView = view as? UIScrollView {
+                        scrollView.isScrollEnabled = false;
+                    }
+                }
+                
+                for view in parentVC!.view.subviews {
+                    if let scrollView = view as? UIScrollView {
+                        scrollView.bounces = false;
+                        scrollView.isScrollEnabled = false;
+                    }
+                }
+            }
+            
+            if(self.view.frame.minX + translation.x < 15){
+                return;
+            }
+            self.view.center = CGPoint(x: self.view.center.x + translation.x, y: self.view.center.y)
+            
+            if(self.view.frame.minX < 0){
+                print("Setting to 0");
+                self.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+            }
+            
+            boopNav.menu.view.frame = CGRect(x: gestureRecognizer.view!.frame.minX-boopNav.menu.view.frame.width, y: boopNav.menu.view.frame.minY, width: boopNav.menu.view.frame.width, height: boopNav.menu.view.frame.height);
+
+            gestureRecognizer.setTranslation(CGPoint.zero, in: self.view)
+        }
+    }
+    
+    @objc func openMenuSwipe(_ gestureRecognizer: UISwipeGestureRecognizer) {
+        
+        if(gestureRecognizer.direction == .right && !menuOpen){
+            openMenu();
+        }
+        
+        if(gestureRecognizer.direction == .left && menuOpen){
+            closeMenu();
+        }
+        
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
     override func viewDidLoad(){
         super.viewDidLoad();
-        messageTable.noView = noMessageView;
         self.parentVC = self.parent as? BoopPageViewController
-        self.view.isUserInteractionEnabled = true
+
+        let drag = UIPanGestureRecognizer(target: self, action: #selector(self.openMenu(_:)))
+        drag.delegate = self;
+        self.view.addGestureRecognizer(drag)
         
+        
+        messageTable.noView = noMessageView;
         messageTable.delegate = self;
         
-       /* let gradient: CAGradientLayer! = CAGradientLayer()
-        gradient.frame = self.view.bounds
-        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
-        gradient.locations = [0.057, 0.065, 0.82, 0.84]
-        gradientContainer.layer.mask = gradient;*/
+        var messageArray = ["Test Message For Designing", "Test test test test test test test test test test test test Test test test test test test test test test test test test", "Ayy Lmao", "Cool Beans my guy - bork bork!"]
         
-        let interestGradient: CAGradientLayer! = CAGradientLayer()
-        interestGradient.frame = self.view.bounds
-        interestGradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
-        interestGradient.locations = [0.0, 0.25, 0.975, 1]
-        interestGradient.startPoint = CGPoint(x: 0.0, y: 0.5)
-        interestGradient.endPoint = CGPoint(x: 1.0, y: 0.5)
-        //interestCollectionView.inset = UIEdgeInsetsMake(0, 25, 0, 25);
+        for _ in 0..<10{
+            let author = User(displayName: "Sam Gehly", phoneNumber: nil, uuid: "sgehly", accessToken: nil);
+            let randomIndex = Int(arc4random_uniform(UInt32(messageArray.count)))
+            let message = Message(author: author, message:messageArray[randomIndex])
+            messageTable.addMessage(message: message)
+        }
         
         
         composer = Composer(parent: self);
         self.view.addSubview(composer!.view);
         
-        for i in 0...10{
-            let user = User(displayName: "Testes", phoneNumber: nil, uuid: nil, accessToken: nil);
-            messageTable.addMessage(message: Message(author: user, message: "123 ABC 123 ABC 123 ABC"))
-        }
+        /*interestViewWrapper.layer.masksToBounds = true;
+        interestViewWrapper.clipsToBounds = true;
+        interestViewWrapper.layer.borderColor = transparent.cgColor
+        interestViewWrapper.layer.borderWidth = 1;
         
-        super.view.layoutSubviews()
-        interestCollectionView.cornerAndBorder(sides: [.top,.left,.right], corners: [.topLeft,.topRight], color: transparent, thickness: 1, cornerRadius: 10)
+        interestCollectionView.contentInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        
+        print("HEYO", self.view.frame.height-interestViewWrapper.frame.minY);*/
+        messageTable.contentInset = UIEdgeInsetsMake(10, 0, 10, 0)
         
     }
     func bringDownComposer(){
@@ -80,21 +231,11 @@ class HomeController: UIViewController, UIGestureRecognizerDelegate, UITableView
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        let contentOffsetY = scrollView.contentOffset.y
-        print(contentOffsetY)
-        if contentOffsetY <= -200 {
+        if scrollView.contentOffset.y <= -200 {
             generator.impactOccurred();
             bringDownComposer()
             
         }
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

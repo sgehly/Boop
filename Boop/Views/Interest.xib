@@ -11,14 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MiniInterestViewController" customModule="Boop" customModuleProvider="target">
             <connections>
-                <outlet property="bottomColorTab" destination="9hi-6s-Ck1" id="Vok-bn-OhA"/>
-                <outlet property="colorTab" destination="Pxe-DS-NHS" id="5yZ-wY-KWd"/>
                 <outlet property="interestLabel" destination="MDe-63-C3K" id="G7q-IO-DxS"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vSn-q3-8fT"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CurvedShadowView" customModule="Boop" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="111" height="49"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -28,31 +26,11 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxe-DS-NHS">
-                    <rect key="frame" x="0.0" y="0.0" width="111" height="2"/>
-                    <color key="backgroundColor" red="0.96862745100000003" green="0.46666666670000001" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="shd-9w-Sxl"/>
-                    </constraints>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9hi-6s-Ck1">
-                    <rect key="frame" x="0.0" y="47" width="111" height="2"/>
-                    <color key="backgroundColor" red="0.96862745100000003" green="0.46666666670000001" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="2" id="Mca-lw-AOq"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="9hi-6s-Ck1" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="068-0b-Eqs"/>
                 <constraint firstItem="MDe-63-C3K" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0U2-4U-DY5"/>
-                <constraint firstItem="Pxe-DS-NHS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="8ie-1d-jPg"/>
-                <constraint firstItem="9hi-6s-Ck1" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="9fj-X2-hYl"/>
                 <constraint firstItem="MDe-63-C3K" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ECu-gJ-n8i"/>
-                <constraint firstItem="Pxe-DS-NHS" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="IDb-eJ-emY"/>
-                <constraint firstItem="9hi-6s-Ck1" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="UUq-2s-6is"/>
-                <constraint firstItem="Pxe-DS-NHS" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="eKa-CS-SMH"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>

@@ -24,8 +24,6 @@ class MessageTableView: UITableView, UITableViewDelegate, UITableViewDataSource{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.dataSource = self;
-        
-        self.contentInset = UIEdgeInsetsMake(10, 0, 10, 0)
         self.layer.shadowColor = UIColor(hue: 0, saturation: 0, brightness: 0, alpha: 0.2).cgColor;
         self.layer.shadowRadius = 3;
     }
